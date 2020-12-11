@@ -1,0 +1,157 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="fba4798f-c9d1-485b-b4ee-5439459e4f50" name="Default Changelist" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="HighlightingSettingsPerFile">
+    <setting file="file://$PROJECT_DIR$/Assets/Plugins/UniRx/Scripts/UnityEngineBridge/Triggers/ObservableTriggerTrigger.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@8.2.0/Runtime/Debugging/DebugManager.Actions.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7597B2C7-34E6-4288-9083-819DF22DA57C/b8/daaa672e/ParticleSystem.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/50FE65A4-93A0-4952-84F1-E3562EFBE38D/5d/936908cc/Single.cs" root0="SKIP_HIGHLIGHTING" />
+  </component>
+  <component name="IdeDocumentHistory">
+    <option name="CHANGED_PATHS">
+      <list>
+        <option value="$PROJECT_DIR$/Assets/Ex.cs" />
+        <option value="$PROJECT_DIR$/Assets/ChemistryObject.cs" />
+        <option value="$PROJECT_DIR$/Assets/Material.cs" />
+        <option value="$PROJECT_DIR$/Assets/Element.cs" />
+        <option value="$PROJECT_DIR$/Assets/Updater.cs" />
+        <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/EditorCode/Ex.cs" />
+        <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/EditorEx/NonEditablInPlayeAttribute.cs" />
+        <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/EditorEx/Ex.cs" />
+        <option value="$PROJECT_DIR$/Assets/Memo/Memo.cs" />
+        <option value="$PROJECT_DIR$/Assets/Memo/Scriipt/Memo.cs" />
+        <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Chemistry.cs" />
+        <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/ChemistryObjectOld.cs" />
+        <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Element.cs" />
+        <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Material.cs" />
+        <option value="$PROJECT_DIR$/Assets/Grass.cs" />
+        <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/ChemistryObject.cs" />
+        <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/ChemistryObjectEx.cs" />
+        <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Element.cs" />
+        <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/ChemistryObjectCallBacks.cs" />
+        <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/ClacVolume.cs" />
+        <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/CalculationVolume.cs" />
+        <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Material.cs" />
+        <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/ChemistryObject.cs" />
+      </list>
+    </option>
+  </component>
+  <component name="ProjectId" id="1iVVhOaw04dz0e9FD2rPhFJ5RKL" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">
+    <property name="Discover.Launch.Via.Unity" value="true" />
+    <property name="RunOnceActivity.OpenProjectViewOnStart" value="true" />
+    <property name="WebServerToolWindowFactoryState" value="false" />
+    <property name="node.js.detected.package.eslint" value="true" />
+    <property name="node.js.detected.package.tslint" value="true" />
+    <property name="node.js.path.for.package.eslint" value="project" />
+    <property name="node.js.path.for.package.tslint" value="project" />
+    <property name="node.js.selected.package.eslint" value="(autodetect)" />
+    <property name="node.js.selected.package.tslint" value="(autodetect)" />
+    <property name="nodejs_package_manager_path" value="npm" />
+    <property name="settings.editor.selected.configurable" value="preferences.sourceCode.C#" />
+    <property name="vue.rearranger.settings.migration" value="true" />
+  </component>
+  <component name="RunManager" selected="Attach to Unity Editor.Attach to Unity Editor">
+    <configuration name="Standalone Player" type="RunUnityExe" factoryName="Unity Executable">
+      <option name="EXE_PATH" value="$PROJECT_DIR$/../../Test/Sample_Old\Chemistry.exe" />
+      <option name="PROGRAM_PARAMETERS" value="" />
+      <option name="WORKING_DIRECTORY" value="D:\Test\Sample_Old" />
+      <option name="PASS_PARENT_ENVS" value="1" />
+      <option name="USE_EXTERNAL_CONSOLE" value="0" />
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor &amp; Play" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="UNITY_ATTACH_AND_PLAY" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="selectedOptions">
+        <set />
+      </option>
+      <method v="2" />
+    </configuration>
+    <configuration name="Attach to Unity Editor" type="UNITY_DEBUG_RUN_CONFIGURATION" factoryName="Unity Debug" show_console_on_std_err="false" show_console_on_std_out="false" port="50000" address="localhost">
+      <option name="allowRunningInParallel" value="false" />
+      <option name="listenPortForConnections" value="false" />
+      <option name="pid" />
+      <option name="selectedOptions">
+        <set />
+      </option>
+      <method v="2" />
+    </configuration>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="fba4798f-c9d1-485b-b4ee-5439459e4f50" name="Default Changelist" comment="" />
+      <created>1601992864729</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1601992864729</updated>
+      <workItem from="1601992867179" duration="638000" />
+      <workItem from="1601993530467" duration="11732000" />
+      <workItem from="1602146318585" duration="6407000" />
+      <workItem from="1602173346908" duration="1102000" />
+      <workItem from="1602369185290" duration="763000" />
+      <workItem from="1602371321808" duration="40267000" />
+      <workItem from="1602425483453" duration="327000" />
+      <workItem from="1602426351682" duration="11545000" />
+      <workItem from="1602565002455" duration="7583000" />
+      <workItem from="1602670961863" duration="22222000" />
+      <workItem from="1603005091579" duration="14123000" />
+      <workItem from="1603102247372" duration="2718000" />
+      <workItem from="1603109346688" duration="2978000" />
+      <workItem from="1607613994202" duration="6999000" />
+      <workItem from="1607662252234" duration="1552000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="UnityProjectConfiguration" hasMinimizedUI="true" />
+  <component name="UnityUnitTestConfiguration" currentTestLauncher="EditMode" />
+  <component name="VcsManagerConfiguration">
+    <option name="CLEAR_INITIAL_COMMIT_MESSAGE" value="true" />
+  </component>
+  <component name="WindowStateProjectService">
+    <state x="1245" y="194" key="RiderGenerateDialog" timestamp="1602379119426">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-675" y="194" key="RiderGenerateDialog/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1601999857488" />
+    <state x="1245" y="194" key="RiderGenerateDialog/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602379119426" />
+    <state x="398" y="154" key="SettingsEditor" timestamp="1602511934533">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="398" y="154" key="SettingsEditor/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602511934533" />
+    <state x="348" y="150" key="SettingsEditor/0.0.1680.1010@0.0.1680.1010" timestamp="1602373256754" />
+    <state x="1096" y="259" width="676" height="534" key="find.popup" timestamp="1602988897435">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-826" y="256" width="676" height="534" key="find.popup/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1602002706083" />
+    <state x="1096" y="259" width="676" height="534" key="find.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602988897435" />
+    <state x="1096" y="242" key="run.anything.popup" timestamp="1602992641363">
+      <screen x="0" y="0" width="1920" height="1040" />
+    </state>
+    <state x="-824" y="242" key="run.anything.popup/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1601999005134" />
+    <state x="1096" y="242" key="run.anything.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602992641363" />
+    <state x="545" y="219" width="672" height="659" key="search.everywhere.popup" timestamp="1603031677234">
+      <screen x="0" y="0" width="1680" height="1010" />
+    </state>
+    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1602003407997" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602996805611" />
+    <state x="545" y="219" width="672" height="659" key="search.everywhere.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1603031677234" />
+  </component>
+</project>
