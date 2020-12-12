@@ -29,6 +29,7 @@
               <e p="Element.cs" t="Include" />
               <e p="Material.cs" t="Include" />
               <e p="MeshParticle.cs" t="Include" />
+              <e p="OnColliderOrTriggerStay.cs" t="Include" />
             </e>
             <e p="EditorEx" t="Include">
               <e p="Ex.cs" t="Include" />

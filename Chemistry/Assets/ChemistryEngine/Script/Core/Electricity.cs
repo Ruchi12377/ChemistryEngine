@@ -1,11 +1,12 @@
 ﻿using System.Collections;
 using UnityEngine;
 using Random = UnityEngine.Random;
+using Object = UnityEngine.Object;
 
 [ExecuteAlways]
 public class Electricity : MeshParticle
 {
-    [SerializeField, NonEditableInPlay] private Transform flash;
+    private Transform _flash;
     private Transform _flash1;
     private Transform _flash2;
     private Transform _noise;
@@ -15,9 +16,10 @@ public class Electricity : MeshParticle
 
     private void OnEnable()
     {
-        _flash1 = flash.GetChild(0);
-        _flash2 = flash.GetChild(1);
-        _noise = flash.GetChild(2);
+        _flash = transform;
+        _flash1 = _flash.GetChild(0);
+        _flash2 = _flash.GetChild(1);
+        _noise = _flash.GetChild(2);
 
         _flash1Mat = _flash1.GetComponent<MeshRenderer>().material;
         _flash2Mat = _flash1.GetComponent<MeshRenderer>().material;
@@ -27,7 +29,7 @@ public class Electricity : MeshParticle
     private void Update()
     {
         var rot = new Vector3(Random.Range(-180, 360), Random.Range(-180, 360), Random.Range(-180, 360));
-        flash.Rotate(rot);
+        _flash.Rotate(rot);
         _noise.Rotate(rot);
         var active = _flash1.gameObject.activeSelf == false;
         _flash1.gameObject.SetActive(active);
@@ -44,7 +46,7 @@ public class Electricity : MeshParticle
         FadeOut(parent.gameObject);
     }
 
-    private void FadeOut(GameObject parent)
+    private void FadeOut(Object parent)
     {
         var f1 = _flash1Mat.color;
         var f2 = _flash2Mat.color;
@@ -66,5 +68,10 @@ public class Electricity : MeshParticle
             }
             UnityEngine.Object.Destroy(parent);
         }   
+    }
+
+    public void Reset()
+    {
+        OnEnable();
     }
 }

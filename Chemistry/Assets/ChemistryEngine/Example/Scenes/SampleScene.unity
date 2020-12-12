@@ -239,7 +239,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &294524035
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -256,22 +256,14 @@ MonoBehaviour:
   particleMagnification:
     fire:
       offset: 0
-      particleMinMax: {x: 0, y: 0}
-    fireMini:
-      offset: 0
-      particleMinMax: {x: 0, y: 0}
     water:
       offset: 0
-      particleMinMax: {x: 0, y: 0}
     ice:
       offset: 0
-      particleMinMax: {x: 0, y: 0}
     wind:
       offset: 0
-      particleMinMax: {x: 0, y: 0}
     electricity:
-      offset: 0
-      particleMinMax: {x: 0, y: 0}
+      offset: 1
   state: 2
   beforeState: 0
 --- !u!54 &294524036
@@ -402,23 +394,15 @@ MonoBehaviour:
   chemistryObjectChemistryObjectType: 1
   particleMagnification:
     fire:
-      offset: 0
-      particleMinMax: {x: 0, y: 0}
-    fireMini:
-      offset: 0
-      particleMinMax: {x: 0, y: 0}
+      offset: 1
     water:
       offset: 0
-      particleMinMax: {x: 0, y: 0}
     ice:
       offset: 0
-      particleMinMax: {x: 0, y: 0}
     wind:
       offset: 0
-      particleMinMax: {x: 0, y: 0}
     electricity:
-      offset: 4
-      particleMinMax: {x: 0, y: 0}
+      offset: 3
   state: 5
   substance: 0
 --- !u!54 &643812114
@@ -598,22 +582,14 @@ MonoBehaviour:
   particleMagnification:
     fire:
       offset: 1
-      particleMinMax: {x: 1, y: 2}
-    fireMini:
-      offset: 0
-      particleMinMax: {x: 0, y: 0}
     water:
       offset: 0
-      particleMinMax: {x: 0, y: 0}
     ice:
       offset: 0
-      particleMinMax: {x: 0, y: 0}
     wind:
       offset: 0
-      particleMinMax: {x: 0, y: 0}
     electricity:
       offset: 4
-      particleMinMax: {x: 0, y: 0}
   state: 1
   substance: 1
 --- !u!54 &1426672503

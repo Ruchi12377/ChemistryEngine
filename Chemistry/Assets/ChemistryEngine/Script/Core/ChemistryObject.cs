@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections;
 using System.Collections.Generic;
-using System.Configuration;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
@@ -18,57 +17,37 @@ namespace Chemistry
 
         //キャッシュ用のTransform
         private Transform _transform;
-        private IObservable<Collider> _triggerExit;
-        private IObservable<Collision> _collisionExit;
         //現在表示されているパーティクル
         private readonly List<GameObject> _currentlyParticle = new List<GameObject>();
         //パーティクルのプレファブ
         private static ChemistryParticlePrefabs _chemistryParticle;
+        private static Vector2 _defaultFireLifeTime;
 
         private ChemistryObjectType ChemistryObjectType
         {
             get => chemistryObjectChemistryObjectType;
             set => chemistryObjectChemistryObjectType = value;
         }
-        
-        //ほかのChemistryObjectとあたったとき
-        private void OnCollisionEnter(Collision other)
-        {
-            var target = other.gameObject.GetComponent<ChemistryObject>();
-            if(target) ChangeState(this,target);
-        }
 
-        private void OnTriggerEnter(Collider other)
+        private void OnEnter(GameObject hit)
         {
-            var target = other.gameObject.GetComponent<ChemistryObject>();
+            var target = hit.GetComponent<ChemistryObject>();
             if(target) ChangeState(this,target);
-        }
-
-        private void OnControllerColliderHit(ControllerColliderHit hit)
-        {
-            var target = hit.gameObject.GetComponent<ChemistryObject>();
-            if(target) ChangeState(this,target);
-        }
-        
-        private void OnCollisionExit(Collision other)
-        {
-            OnExit(other.gameObject);
-        }
-
-        private void OnTriggerExit(Collider other)
-        {
-            OnExit(other.gameObject);
+            
         }
 
         private void OnExit(GameObject hit)
         {
-            //デフォルトがElectricityだったら
+            //自分が電気だったら、相手をもとに戻す
             if (GetElement(this).State == State.Electricity)
             {
                 var co = hit.GetComponent<ChemistryObject>();
-                if (GetElement(co).State == State.Electricity)
+                if (co != null)
                 {
-                    GetElement(co).State = GetElement(co).beforeState;
+                    if (GetElement(co).State == State.Electricity)
+                    {
+                        GetElement(co).State = GetElement(co).beforeState;
+                    }
                 }
             }
         }
@@ -252,7 +231,6 @@ namespace Chemistry
 
             chemistryObject._currentlyParticle.Clear();
             var scale = 1f;
-            var minmax = Vector2.zero;
 
             GameObject go = null;
             try
@@ -265,29 +243,25 @@ namespace Chemistry
             }
             chemistryObject._currentlyParticle.Add(go);
 
+            //Set offset
             switch (state)
             {
                 case State.Undefined:
                     break;
                 case State.Fire:
                     scale = particleMagnification.fire.offset;
-                    minmax = particleMagnification.fire.particleMinMax;
                     break;
                 case State.Water:
                     scale = particleMagnification.water.offset;
-                    minmax = particleMagnification.water.particleMinMax;
                     break;
                 case State.Ice:
                     scale = particleMagnification.ice.offset;
-                    minmax = particleMagnification.ice.particleMinMax;
                     break;
                 case State.Wind:
                     scale = particleMagnification.wind.offset;
-                    minmax = particleMagnification.wind.particleMinMax;
                     break;
                 case State.Electricity:
                     scale = particleMagnification.electricity.offset;
-                    minmax = particleMagnification.electricity.particleMinMax;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);
@@ -297,9 +271,10 @@ namespace Chemistry
             if (go != null)
             {
                 var particle = go.GetComponent<ParticleSystem>();
-                var meshParticle = go.GetComponent<MeshParticle>();
                 if (particle != null)
                 {
+                    //lifetimeをscale似合わせる
+                    var lifeTime = _defaultFireLifeTime * scale;
                     ParticleSystem.MainModule main;
                     main = particle.main;
                     var curve = main.startLifetime;
@@ -309,8 +284,8 @@ namespace Chemistry
                             curve = curve.constant;
                             break;
                         case ParticleSystemCurveMode.TwoConstants:
-                            curve.constantMin = Mathf.Clamp(minmax.x, 0.1f, 5);
-                            curve.constantMax = Mathf.Clamp(minmax.y, 0.1f, 5);
+                            curve.constantMin = Mathf.Clamp(lifeTime.x, 0.1f, 5);
+                            curve.constantMax = Mathf.Clamp(lifeTime.y, 0.1f, 5);
                             break;
                         case ParticleSystemCurveMode.Curve:
                             curve = curve.Evaluate(Random.value);
@@ -427,6 +402,14 @@ namespace Chemistry
         
         #region Call by UnityEngine
 
+        private void Awake()
+        {
+            var a = this.OnColliderOrTriggerStayAsObservable(x =>
+            {
+                Debug.Log(x.name);
+            });
+        }
+
         private void OnEnable()
         {
             _transform = transform;
@@ -475,12 +458,40 @@ namespace Chemistry
         
         private void Reset() => CheckObjectType();
         
+        //ほかのChemistryObjectとあたったとき
+        private void OnCollisionEnter(Collision other)
+        {
+            OnEnter(other.gameObject);
+        }
+
+        private void OnTriggerEnter(Collider other)
+        {
+            OnEnter(other.gameObject);
+        }
+
+        private void OnControllerColliderHit(ControllerColliderHit hit)
+        {
+            OnEnter(hit.gameObject);
+        }
+        
+        private void OnCollisionExit(Collision other)
+        {
+            OnExit(other.gameObject);
+        }
+
+        private void OnTriggerExit(Collider other)
+        {
+            OnExit(other.gameObject);
+        }
+        
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void Init()
         {
             try
             {
                 _chemistryParticle.fire = Load("Fire");
+                var lifetime = _chemistryParticle.fire.GetComponent<ParticleSystem>().main.startLifetime;
+                _defaultFireLifeTime = new Vector2(lifetime.constantMin, lifetime.constantMax);
                 _chemistryParticle.water = Load("Water");
                 _chemistryParticle.ice = Load("Ice");
                 _chemistryParticle.wind = Load("Wind");
