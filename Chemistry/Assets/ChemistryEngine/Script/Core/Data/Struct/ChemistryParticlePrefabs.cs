@@ -4,11 +4,10 @@ namespace Chemistry
 {
     public struct ChemistryParticlePrefabs
     {
-        public GameObject Fire;
-        public GameObject FireMini;
-        public GameObject Water;
-        public GameObject Ice;
-        public GameObject Wind;
-        public GameObject Electricity;
+        public GameObject fire;
+        public GameObject water;
+        public GameObject ice;
+        public GameObject wind;
+        public GameObject electricity;
     }
 }
