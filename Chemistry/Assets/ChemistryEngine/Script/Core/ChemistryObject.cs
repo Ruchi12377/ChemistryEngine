@@ -33,25 +33,47 @@ namespace Chemistry
         {
             var target = hit.GetComponent<ChemistryObject>();
             if(target) ChangeState(this,target);
-            
         }
 
         private void OnExit(GameObject hit)
         {
-            //自分が電気だったら、相手をもとに戻す
-            if (GetElement(this).State == State.Electricity)
+            var co = hit.GetComponent<ChemistryObject>();
+            if (co != null)
             {
-                var co = hit.GetComponent<ChemistryObject>();
-                if (co != null)
+                //自分が電気だったら、相手をもとに戻す
+                if (GetElement(this).State == State.Electricity)
                 {
                     if (GetElement(co).State == State.Electricity)
                     {
                         GetElement(co).State = GetElement(co).beforeState;
                     }
+                }  
+                
+                //相手が電気だったら自分を元に戻す
+                if (GetElement(co).State == State.Electricity)
+                {
+                    if (GetElement(this).State == State.Electricity)
+                    {
+                        GetElement(this).State = GetElement(this).beforeState;
+                    }
                 }
             }
         }
-        
+
+        private void OnStay(GameObject hit)
+        {
+            Debug.Log($"{name} : {hit.name}");
+            var target = hit.GetComponent<ChemistryObject>();
+            if (target)
+            {
+                //自分が電気ではないかつ、相手が電気なら
+                if (GetElement(this).State != State.Electricity && GetElement(target).State == State.Electricity)
+                {
+                    ChangeState(this, State.Electricity);
+                }
+            }
+        }
+
         /// <summary>
         /// 炎
         /// 水
@@ -65,7 +87,7 @@ namespace Chemistry
         /// Ice
         /// Wind
         /// Electricity
-        /// UnInvalidCastExceptiondefined
+        /// UnInvalidCastExceptionDefined
         /// </summary>
         /// <param name="a"></param>
         /// <param name="b"></param>
@@ -404,10 +426,7 @@ namespace Chemistry
 
         private void Awake()
         {
-            var a = this.OnColliderOrTriggerStayAsObservable(x =>
-            {
-                Debug.Log(x.name);
-            });
+            this.OnColliderOrTriggerStayAsObservable().Subscribe(OnStay);
         }
 
         private void OnEnable()

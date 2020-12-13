@@ -5,6 +5,7 @@ namespace Chemistry
     public sealed class Element : ChemistryObject
     {
         [SerializeField, NonEditableInPlay] private State state;
+        [SerializeField, NonEditableInPlay] private State oneMoreState;
         [NonEditable] public State beforeState;
         public State State
         {

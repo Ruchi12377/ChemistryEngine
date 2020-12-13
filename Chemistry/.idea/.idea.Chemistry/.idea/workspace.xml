@@ -25,72 +25,9 @@
     <list default="true" id="fba4798f-c9d1-485b-b4ee-5439459e4f50" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Chemistry/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Chemistry/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Chemistry/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Chemistry/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Fire.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Fire.prefab.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Material/Electron.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Material/Electron.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Material/Texture/Electricity.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Material/Texture/Electricity.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Material/Texture/Electricity_Noise.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Material/Texture/Electricity_Noise.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Material/Texture/Fire.png" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Material/Texture/Fire.png.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Material/Texture/fire.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Material/Texture/fire.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Resources/Chemistry_Electricity.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Resources/Chemistry_Electricity.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Resources/Chemistry_Fire.prefab" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Resources/Chemistry_Fire.prefab" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Resources/Chemistry_Fire_Mini.prefab" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Resources/Chemistry_Fire_Mini.prefab.meta" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/ChemistryObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/ChemistryObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Data/Class/SizeOffset.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Data/Class/SizeOffset.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Data/Struct/ParticleMagnification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Data/Struct/ParticleMagnification.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Electricity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Electricity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Ground.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Ground.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Image.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Image/Ground037_2K_Color.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Image/Ground037_2K_Color.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Image/Ground037_2K_Normal.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Image/Ground037_2K_Normal.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Image/Metal003_2K_Color.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Image/Metal003_2K_Color.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Image/Metal003_2K_Normal.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Image/Metal003_2K_Normal.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Image/Stylized_Crate_001_basecolor.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Image/Stylized_Crate_001_basecolor.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Image/Stylized_Crate_001_normal.jpg" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Image/Stylized_Crate_001_normal.jpg.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Metal.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Metal.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Shader.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Shader/Water.shadergraph" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Shader/Water.shadergraph.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Skybox_Mat.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Skybox_Mat.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Water.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/Water.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/WoodBox.mat" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Materials/WoodBox.mat.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene.unity.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene/LightingData.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene/LightingData.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene/ReflectionProbe-0.exr" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Scenes/SampleScene/ReflectionProbe-0.exr.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/ForwardRenderer.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/ForwardRenderer.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/SampleSceneProfile.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/SampleSceneProfile.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRP-HighQuality.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRP-HighQuality.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRP-LowQuality.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRP-LowQuality.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRP-MediumQuality.asset" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/Settings/UniversalRP-MediumQuality.asset.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/EditorBuildSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Element.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Element.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/OnColliderOrTriggerStay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/OnColliderOrTriggerStay.cs" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -101,12 +38,7 @@
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/MeshParticle.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/7597B2C7-34E6-4288-9083-819DF22DA57C/b8/daaa672e/ParticleSystem.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.core@8.2.0/Runtime/Debugging/DebugManager.Actions.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/63DD8BF9-8CFA-4BA9-85AF-735EF1A56BA9/44/1ce98c7b/Action`1.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Electricity.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/50FE65A4-93A0-4952-84F1-E3562EFBE38D/5d/936908cc/Single.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
     <option name="CHANGED_PATHS">
@@ -128,7 +60,6 @@
         <option value="$PROJECT_DIR$/Assets/Grass.cs" />
         <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/ChemistryObject.cs" />
         <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/ChemistryObjectEx.cs" />
-        <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Element.cs" />
         <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/ChemistryObjectCallBacks.cs" />
         <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/ClacVolume.cs" />
         <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/CalculationVolume.cs" />
@@ -140,8 +71,9 @@
         <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Material/Shader/IceShader.shader" />
         <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Data/Class/SizeOffset.cs" />
         <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Electricity.cs" />
-        <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/ChemistryObject.cs" />
         <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/OnColliderOrTriggerStay.cs" />
+        <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/ChemistryObject.cs" />
+        <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Element.cs" />
       </list>
     </option>
   </component>
@@ -220,6 +152,7 @@
       <workItem from="1607669357609" duration="798000" />
       <workItem from="1607693931202" duration="10054000" />
       <workItem from="1607770972482" duration="10333000" />
+      <workItem from="1607829545411" duration="4225000" />
     </task>
     <servers />
   </component>
@@ -268,11 +201,12 @@
     </state>
     <state x="-824" y="242" key="run.anything.popup/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1601999005134" />
     <state x="1096" y="242" key="run.anything.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607789824101" />
-    <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1607696555109">
-      <screen x="-1920" y="0" width="1920" height="1040" />
+    <state x="545" y="247" width="672" height="669" key="search.everywhere.popup" timestamp="1607833304603">
+      <screen x="0" y="25" width="1680" height="1025" />
     </state>
     <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1607696555109" />
     <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602996805611" />
     <state x="545" y="219" width="672" height="659" key="search.everywhere.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1603031677234" />
+    <state x="545" y="247" width="672" height="669" key="search.everywhere.popup/0.25.1680.1025@0.25.1680.1025" timestamp="1607833304603" />
   </component>
 </project>
