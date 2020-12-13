@@ -22,7 +22,9 @@ namespace Chemistry
         //パーティクルのプレファブ
         private static ChemistryParticlePrefabs _chemistryParticle;
         private static Vector2 _defaultFireLifeTime;
-
+        private bool _isParentChemistryObject;
+        public Element Element { get; private set; }
+        
         private ChemistryObjectType ChemistryObjectType
         {
             get => chemistryObjectChemistryObjectType;
@@ -32,46 +34,133 @@ namespace Chemistry
         private void OnEnter(GameObject hit)
         {
             var target = hit.GetComponent<ChemistryObject>();
-            if(target) ChangeState(this,target);
+
+            if (target)
+            {
+                var thisElement = Element;
+                Material material = null;
+                try
+                {
+                    material = (Material) this;
+                }
+                catch { /**/}
+
+                //自分が電気ではないかつ
+                var nonElectricity = thisElement.State != State.Electricity;
+                //materialがnullではないかつ自分が水または属性が鉄または液体（導電）
+                var conductor = material == null || thisElement.State == State.Water || material.substance == Substance.Metal || material.substance == Substance.Liquid;
+                //相手が電気なら
+                var targetIsElectricity = target.Element.State == State.Electricity || target.Element.SubState == State.Electricity;
+                if (nonElectricity && conductor && targetIsElectricity)
+                {
+                    ChangeState(this, State.Electricity);
+                }
+                else
+                {
+                    ChangeState(this, target);
+                }
+            }
         }
 
         private void OnExit(GameObject hit)
         {
-            var co = hit.GetComponent<ChemistryObject>();
+            /*var co = hit.GetComponent<ChemistryObject>();
+
             if (co != null)
             {
-                //自分が電気だったら、相手をもとに戻す
-                if (GetElement(this).State == State.Electricity)
+                //ResetState(co);
+            }*/
+        }
+        
+        /*public void ResetState(ChemistryObject target)
+        {
+            //自分が電気だったら、相手をもとに戻す
+            var element = Element;
+            var parent = _isParentChemistryObject ? target : target._transform.parent.GetComponent<ChemistryObject>();
+            if (element.State == State.Electricity || element.SubState == State.Electricity)
+            {
+                if (parent.Element.SubState == State.Electricity)
                 {
-                    if (GetElement(co).State == State.Electricity)
+                    Debug.Log(parent.name + "をもどす。" + name + " : " + parent.Count);
+                    parent.Element.SubState = State.Undefined;
+                    //要素数が0になるまでまで繰り返す
+                    if (parent.currentHitChemistryObjects.Count > 0)
                     {
-                        GetElement(co).State = GetElement(co).beforeState;
-                    }
-                }  
-                
-                //相手が電気だったら自分を元に戻す
-                if (GetElement(co).State == State.Electricity)
-                {
-                    if (GetElement(this).State == State.Electricity)
-                    {
-                        GetElement(this).State = GetElement(this).beforeState;
+                        Debug.Log("繰り返し" + parent.currentHitChemistryObjects.Count);
+                        ResetState(parent.currentHitChemistryObjects.Dequeue());
                     }
                 }
             }
-        }
-
+        }*/
+        
         private void OnStay(GameObject hit)
         {
-            Debug.Log($"{name} : {hit.name}");
             var target = hit.GetComponent<ChemistryObject>();
             if (target)
             {
-                //自分が電気ではないかつ、相手が電気なら
-                if (GetElement(this).State != State.Electricity && GetElement(target).State == State.Electricity)
+                if (name == "Water")
+                {
+                    Debug.Log(hit.name);
+                }
+                var priorityThisState =
+                    Element.State == State.Electricity && target.Element.SubState != State.Electricity ||
+                    Element.SubState == State.Electricity && target.Element.State != State.Electricity;
+                var priorityTargetState =
+                    Element.State != State.Electricity && target.Element.SubState == State.Electricity ||
+                    Element.SubState != State.Electricity && target.Element.State == State.Electricity;
+                target.Element.SubState = State.Undefined;
+                
+                if (gameObject.GetInstanceID() > target.gameObject.GetInstanceID())
+                {
+                    if (priorityThisState)
+                    {
+                        Change(this, target);
+                    }
+                    else if (priorityTargetState)
+                    {
+                        Change(target, this);
+                    }
+                    else
+                    {
+                        Change(target, this);
+                    }
+                }
+                else if (priorityThisState == false && priorityTargetState == false)
+                {
+                    Change(this, target);
+                }
+
+                void Change(ChemistryObject a, ChemistryObject b)
+                {
+                    if (a.Element.State == State.Electricity || a.Element.SubState == State.Electricity)
+                    {
+                        Debug.Log($"{a.name}は電気。{b.name}変える");
+                        b.Element.SubState = State.Electricity;   
+                    }
+                }
+            }
+            /*var target = hit.GetComponent<ChemistryObject>();
+            if (target)
+            {
+                
+                var thisElement = Element;
+                Material material = null;
+                try
+                {
+                    material = (Material) this;
+                }
+                catch { }
+                //自分が電気ではないかつ
+                var nonElectricity = thisElement.State != State.Electricity;
+                //materialがnullではないかつ自分が水または属性が鉄または液体（導電）
+                var conductor = material == null || thisElement.State == State.Water || material.substance == Substance.Metal || material.substance == Substance.Liquid;
+                //相手が電気なら
+                var targetIsElectricity = target.Element.State == State.Electricity || target.Element.SubState == State.Electricity;
+                if (nonElectricity && conductor && targetIsElectricity)
                 {
                     ChangeState(this, State.Electricity);
                 }
-            }
+            }*/
         }
 
         /// <summary>
@@ -151,20 +240,28 @@ namespace Chemistry
         private void ChangeState(ChemistryObject chemistryObject, State state, bool isFirstChange = false)
         {
             //初めてじゃないのに、変化してない場合
-            if (GetElement(chemistryObject).State == state && isFirstChange == false) return;
-            var material = false; 
+            if (chemistryObject.Element.State == state && isFirstChange == false) return;
             try
             {
-                material = chemistryObject is Material;
             }
             catch (Exception)
             {
                 //
             }
-            GetElement(chemistryObject).State = state;
 
-            var parent = material ? ((Material)chemistryObject).element.transform : _transform;
-            CreateParticle(parent, chemistryObject);
+            //最初か、電気意外なら
+            if (isFirstChange || state != State.Electricity)
+            {
+                chemistryObject.Element.State = state;
+            }
+            else
+            {
+                //はじめ以外で電気なら
+                chemistryObject.Element.SubState = state;
+            }
+            
+            var parent = _isParentChemistryObject ? _transform : Element._transform;
+            CreateParticle(parent, chemistryObject, isFirstChange);
         }
 
         //2つのステート、素材から適切なステートを返す
@@ -178,8 +275,8 @@ namespace Chemistry
             var em = a.ChemistryObjectType == ChemistryObjectType.Element && b.ChemistryObjectType == ChemistryObjectType.Material;
             var ee = a.ChemistryObjectType == ChemistryObjectType.Element && b.ChemistryObjectType == ChemistryObjectType.Element;
 
-            var aState = GetElement(a).State;
-            var bState = GetElement(b).State;
+            var aState = a.Element.State;
+            var bState = b.Element.State;
 
             if (em)
             {
@@ -241,15 +338,23 @@ namespace Chemistry
         }
 
         //パーティクル作成
-        private void CreateParticle(Transform parent, ChemistryObject chemistryObject)
+        private void CreateParticle(Transform parent, ChemistryObject chemistryObject, bool isFirstChange)
         {
-            var state = GetElement(chemistryObject).State;
+            if (chemistryObject._isParentChemistryObject == false) return;
+            if (this is Material)
+            {
+                parent = parent.GetChild(0);
+            }
+            var element = chemistryObject.Element;
+            var state = element.State;
             //グリッドのようなものを作ってそれにそってパーティクルを作成するかも
             //Lengthだけなのは0以上ならあたってる判定になるから
             //var length = Physics.OverlapBoxNonAlloc(_transform.position, _transform.localScale / 2, null,_transform.rotation);
 
             //  ステートを変化させた時のパーティクル関係
-            DestroyParticle(chemistryObject._currentlyParticle);
+            
+            //初めてじゃないかつ、サブステートが電気じゃないなら、パーティクルを消す
+            if(isFirstChange == false && element.SubState != State.Electricity) DestroyParticle(chemistryObject._currentlyParticle);
 
             chemistryObject._currentlyParticle.Clear();
             var scale = 1f;
@@ -264,7 +369,6 @@ namespace Chemistry
                 //ignored
             }
             chemistryObject._currentlyParticle.Add(go);
-
             //Set offset
             switch (state)
             {
@@ -421,21 +525,17 @@ namespace Chemistry
             }
         }
 
-        
         #region Call by UnityEngine
 
         private void Awake()
         {
             this.OnColliderOrTriggerStayAsObservable().Subscribe(OnStay);
-        }
-
-        private void OnEnable()
-        {
+            
             _transform = transform;
             // ReSharper disable once InvertIf
             if (this is Material material &&  material.element == null)
             {
-                var go = new GameObject() {name = "Element"};
+                var go = new GameObject {name = "Element"};
                 //Element
                 var element = go.AddComponent<Element>();
                 element.State = material.State;
@@ -448,25 +548,22 @@ namespace Chemistry
                 var trans = go.transform;
                 trans.parent = _transform;
                 trans.localPosition = Vector3.zero;
+                //elementを代入
+                Element = element;
             }
-            
-            CheckObjectType();
-            ChangeState(this, GetElement(this).State, true);
+            else
+            {
+                //elementを代入
+                Element = (Element)this;
+            }
         }
 
-        private static Element GetElement(ChemistryObject chemistryObject)
+        private void Start()
         {
-            switch (chemistryObject)
-            {
-                case Element element:
-                    return element;
-                case Material material:
-                    return material.element;
-                default:
-                    Debug.LogError(new ArgumentNullException());
-                    break;
-            }
-            return null;
+            var col = GetComponent<Collider>();
+            _isParentChemistryObject = col;
+            CheckObjectType();
+            ChangeState(this, Element.State, true);
         }
 
         private void OnDisable() => Dispose();

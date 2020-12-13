@@ -5,7 +5,7 @@ namespace Chemistry
     public sealed class Element : ChemistryObject
     {
         [SerializeField, NonEditableInPlay] private State state;
-        [SerializeField, NonEditableInPlay] private State oneMoreState;
+        [SerializeField, NonEditable] private State subState;
         [NonEditable] public State beforeState;
         public State State
         {
@@ -15,6 +15,12 @@ namespace Chemistry
                 beforeState = state;
                 state = value;
             }
+        }
+        
+        public State SubState
+        {
+            get => subState;
+            set => subState = value;
         }
     }
 }

@@ -25,9 +25,16 @@
     <list default="true" id="fba4798f-c9d1-485b-b4ee-5439459e4f50" name="Default Changelist" comment="">
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Chemistry/.idea/contentModel.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Chemistry/.idea/contentModel.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Chemistry/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Chemistry/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assembly-CSharp.csproj.DotSettings" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Example/Scenes/SampleScene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Example/Scenes/SampleScene.unity" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/ChemistryObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/ChemistryObject.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Element.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Element.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/OnColliderOrTriggerStay.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/OnColliderOrTriggerStay.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fire.prefab" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fire.prefab.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fire.vfx" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/Fire.vfx.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/New Lighting Settings.lighting" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/New Lighting Settings.lighting.meta" beforeDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,8 +79,8 @@
         <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Data/Class/SizeOffset.cs" />
         <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Electricity.cs" />
         <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/OnColliderOrTriggerStay.cs" />
-        <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/ChemistryObject.cs" />
         <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Element.cs" />
+        <option value="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/ChemistryObject.cs" />
       </list>
     </option>
   </component>
@@ -153,6 +160,9 @@
       <workItem from="1607693931202" duration="10054000" />
       <workItem from="1607770972482" duration="10333000" />
       <workItem from="1607829545411" duration="4225000" />
+      <workItem from="1607842580303" duration="5161000" />
+      <workItem from="1607869776932" duration="4587000" />
+      <workItem from="1607874427229" duration="11756000" />
     </task>
     <servers />
   </component>
@@ -196,16 +206,16 @@
     </state>
     <state x="-826" y="256" width="676" height="534" key="find.popup/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1607698351990" />
     <state x="1096" y="259" width="676" height="534" key="find.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602988897435" />
-    <state x="1096" y="242" key="run.anything.popup" timestamp="1607789824101">
+    <state x="1096" y="242" key="run.anything.popup" timestamp="1607877823875">
       <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-824" y="242" key="run.anything.popup/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1601999005134" />
-    <state x="1096" y="242" key="run.anything.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607789824101" />
-    <state x="545" y="247" width="672" height="669" key="search.everywhere.popup" timestamp="1607833304603">
-      <screen x="0" y="25" width="1680" height="1025" />
+    <state x="1096" y="242" key="run.anything.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607877823875" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup" timestamp="1607878009173">
+      <screen x="0" y="0" width="1920" height="1040" />
     </state>
     <state x="-1297" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1040/0.0.1920.1040@-1920.0.1920.1040" timestamp="1607696555109" />
-    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1602996805611" />
+    <state x="623" y="225" width="672" height="678" key="search.everywhere.popup/-1920.0.1920.1040/0.0.1920.1040@0.0.1920.1040" timestamp="1607878009173" />
     <state x="545" y="219" width="672" height="659" key="search.everywhere.popup/0.0.1680.1010@0.0.1680.1010" timestamp="1603031677234" />
     <state x="545" y="247" width="672" height="669" key="search.everywhere.popup/0.25.1680.1025@0.25.1680.1025" timestamp="1607833304603" />
   </component>
