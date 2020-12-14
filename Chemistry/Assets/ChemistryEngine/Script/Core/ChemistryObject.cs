@@ -15,6 +15,7 @@ namespace Chemistry
         //パーティクルの大きさの差分
         [SerializeField, NonEditableInPlay] private ParticleMagnification particleMagnification;
 
+        public int test;
         //キャッシュ用のTransform
         private Transform _transform;
         //現在表示されているパーティクル
@@ -23,8 +24,8 @@ namespace Chemistry
         private static ChemistryParticlePrefabs _chemistryParticle;
         private static Vector2 _defaultFireLifeTime;
         private bool _isParentChemistryObject;
-        public Element Element { get; private set; }
-        
+        private Element _element;
+
         private ChemistryObjectType ChemistryObjectType
         {
             get => chemistryObjectChemistryObjectType;
@@ -37,7 +38,7 @@ namespace Chemistry
 
             if (target)
             {
-                var thisElement = Element;
+                var thisElement = _element;
                 Material material = null;
                 try
                 {
@@ -50,7 +51,7 @@ namespace Chemistry
                 //materialがnullではないかつ自分が水または属性が鉄または液体（導電）
                 var conductor = material == null || thisElement.State == State.Water || material.substance == Substance.Metal || material.substance == Substance.Liquid;
                 //相手が電気なら
-                var targetIsElectricity = target.Element.State == State.Electricity || target.Element.SubState == State.Electricity;
+                var targetIsElectricity = target._element.State == State.Electricity || target._element.SubState == State.Electricity;
                 if (nonElectricity && conductor && targetIsElectricity)
                 {
                     ChangeState(this, State.Electricity);
@@ -61,82 +62,44 @@ namespace Chemistry
                 }
             }
         }
-
-        private void OnExit(GameObject hit)
-        {
-            /*var co = hit.GetComponent<ChemistryObject>();
-
-            if (co != null)
-            {
-                //ResetState(co);
-            }*/
-        }
-        
-        /*public void ResetState(ChemistryObject target)
-        {
-            //自分が電気だったら、相手をもとに戻す
-            var element = Element;
-            var parent = _isParentChemistryObject ? target : target._transform.parent.GetComponent<ChemistryObject>();
-            if (element.State == State.Electricity || element.SubState == State.Electricity)
-            {
-                if (parent.Element.SubState == State.Electricity)
-                {
-                    Debug.Log(parent.name + "をもどす。" + name + " : " + parent.Count);
-                    parent.Element.SubState = State.Undefined;
-                    //要素数が0になるまでまで繰り返す
-                    if (parent.currentHitChemistryObjects.Count > 0)
-                    {
-                        Debug.Log("繰り返し" + parent.currentHitChemistryObjects.Count);
-                        ResetState(parent.currentHitChemistryObjects.Dequeue());
-                    }
-                }
-            }
-        }*/
         
         private void OnStay(GameObject hit)
         {
             var target = hit.GetComponent<ChemistryObject>();
             if (target)
             {
-                if (name == "Water")
-                {
-                    Debug.Log(hit.name);
-                }
                 var priorityThisState =
-                    Element.State == State.Electricity && target.Element.SubState != State.Electricity ||
-                    Element.SubState == State.Electricity && target.Element.State != State.Electricity;
+                    _element.State == State.Electricity && target._element.SubState != State.Electricity ||
+                    _element.SubState == State.Electricity && target._element.State != State.Electricity;
                 var priorityTargetState =
-                    Element.State != State.Electricity && target.Element.SubState == State.Electricity ||
-                    Element.SubState != State.Electricity && target.Element.State == State.Electricity;
-                target.Element.SubState = State.Undefined;
+                    _element.State != State.Electricity && target._element.SubState == State.Electricity ||
+                    _element.SubState != State.Electricity && target._element.State == State.Electricity;
+                //target._element.SubState = State.Undefined;
+                var compareInstanceID = gameObject.GetInstanceID() > target.gameObject.GetInstanceID();
                 
-                if (gameObject.GetInstanceID() > target.gameObject.GetInstanceID())
+                Debug.Log($"{name} {priorityThisState} : {priorityTargetState} : {compareInstanceID}");
+                
+                if(compareInstanceID)
                 {
-                    if (priorityThisState)
-                    {
-                        Change(this, target);
-                    }
-                    else if (priorityTargetState)
-                    {
-                        Change(target, this);
-                    }
-                    else
-                    {
-                        Change(target, this);
-                    }
-                }
-                else if (priorityThisState == false && priorityTargetState == false)
+                    Change(target, this);
+                }else if (priorityThisState)
                 {
                     Change(this, target);
                 }
+                else if (priorityTargetState)
+                {
+                    Change(target, this);
+                }
+                else
+                {
+                    Change(this, target);
+                }
+                
 
                 void Change(ChemistryObject a, ChemistryObject b)
                 {
-                    if (a.Element.State == State.Electricity || a.Element.SubState == State.Electricity)
-                    {
-                        Debug.Log($"{a.name}は電気。{b.name}変える");
-                        b.Element.SubState = State.Electricity;   
-                    }
+                    Debug.Log($"{a.name}は電気。{b.name}変える");
+                    b._element.SubState = State.Electricity;
                 }
             }
             /*var target = hit.GetComponent<ChemistryObject>();
@@ -240,7 +203,7 @@ namespace Chemistry
         private void ChangeState(ChemistryObject chemistryObject, State state, bool isFirstChange = false)
         {
             //初めてじゃないのに、変化してない場合
-            if (chemistryObject.Element.State == state && isFirstChange == false) return;
+            if (chemistryObject._element.State == state && isFirstChange == false) return;
             try
             {
             }
@@ -252,15 +215,15 @@ namespace Chemistry
             //最初か、電気意外なら
             if (isFirstChange || state != State.Electricity)
             {
-                chemistryObject.Element.State = state;
+                chemistryObject._element.State = state;
             }
             else
             {
                 //はじめ以外で電気なら
-                chemistryObject.Element.SubState = state;
+                chemistryObject._element.SubState = state;
             }
             
-            var parent = _isParentChemistryObject ? _transform : Element._transform;
+            var parent = _isParentChemistryObject ? _transform : _element._transform;
             CreateParticle(parent, chemistryObject, isFirstChange);
         }
 
@@ -275,8 +238,8 @@ namespace Chemistry
             var em = a.ChemistryObjectType == ChemistryObjectType.Element && b.ChemistryObjectType == ChemistryObjectType.Material;
             var ee = a.ChemistryObjectType == ChemistryObjectType.Element && b.ChemistryObjectType == ChemistryObjectType.Element;
 
-            var aState = a.Element.State;
-            var bState = b.Element.State;
+            var aState = a._element.State;
+            var bState = b._element.State;
 
             if (em)
             {
@@ -345,7 +308,7 @@ namespace Chemistry
             {
                 parent = parent.GetChild(0);
             }
-            var element = chemistryObject.Element;
+            var element = chemistryObject._element;
             var state = element.State;
             //グリッドのようなものを作ってそれにそってパーティクルを作成するかも
             //Lengthだけなのは0以上ならあたってる判定になるから
@@ -539,6 +502,7 @@ namespace Chemistry
                 //Element
                 var element = go.AddComponent<Element>();
                 element.State = material.State;
+                element.test = test;
                 material.element = element;
                 //Rigidbody
                 var rb = go.GetComponent<Rigidbody>();
@@ -549,12 +513,12 @@ namespace Chemistry
                 trans.parent = _transform;
                 trans.localPosition = Vector3.zero;
                 //elementを代入
-                Element = element;
+                _element = element;
             }
             else
             {
                 //elementを代入
-                Element = (Element)this;
+                _element = (Element)this;
             }
         }
 
@@ -563,7 +527,7 @@ namespace Chemistry
             var col = GetComponent<Collider>();
             _isParentChemistryObject = col;
             CheckObjectType();
-            ChangeState(this, Element.State, true);
+            ChangeState(this, _element.State, true);
         }
 
         private void OnDisable() => Dispose();
@@ -589,17 +553,24 @@ namespace Chemistry
         {
             OnEnter(hit.gameObject);
         }
-        
-        private void OnCollisionExit(Collision other)
+
+        private void OnGUI()
         {
-            OnExit(other.gameObject);
+            if (_isParentChemistryObject)
+            {
+                GUI.color = Color.black;
+                var style = new GUIStyle {fontSize = 30};
+                var dash = "";
+                if (_element.State == State.Electricity|| _element.SubState == State.Electricity)
+                {
+                    GUI.color = Color.yellow;
+                    dash = "*";
+                }
+                GUI.Label(new Rect(20, 30 * test, 1000, 100),
+                    $"{dash} {name} : State : {_element.State} SubState : {_element.SubState}", style);
+            }
         }
 
-        private void OnTriggerExit(Collider other)
-        {
-            OnExit(other.gameObject);
-        }
-        
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void Init()
         {

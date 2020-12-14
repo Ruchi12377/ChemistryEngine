@@ -263,7 +263,8 @@ MonoBehaviour:
     wind:
       offset: 0
     electricity:
-      offset: 1.1111112e+9
+      offset: 1
+  test: 2
   state: 2
   subState: 0
   beforeState: 0
@@ -404,6 +405,7 @@ MonoBehaviour:
       offset: 0
     electricity:
       offset: 3
+  test: 1
   state: 0
   substance: 0
 --- !u!54 &522001781
@@ -543,6 +545,7 @@ MonoBehaviour:
       offset: 0
     electricity:
       offset: 3
+  test: 0
   state: 5
   substance: 0
 --- !u!54 &643812114
@@ -730,6 +733,7 @@ MonoBehaviour:
       offset: 0
     electricity:
       offset: 4
+  test: 0
   state: 1
   substance: 1
 --- !u!54 &1426672503
@@ -844,7 +848,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1569528326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -869,6 +873,7 @@ MonoBehaviour:
       offset: 0
     electricity:
       offset: 3
+  test: 0
   state: 0
   substance: 0
 --- !u!54 &1569528327
