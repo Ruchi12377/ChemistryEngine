@@ -14,7 +14,9 @@ namespace Chemistry
         [SerializeField, NonEditable] private ChemistryObjectType chemistryObjectChemistryObjectType;
         //パーティクルの大きさの差分
         [SerializeField, NonEditableInPlay] private ParticleMagnification particleMagnification;
-
+        [SerializeField]
+        private bool verifiedElectricity;
+        
         public int test;
         //キャッシュ用のTransform
         private Transform _transform;
@@ -68,7 +70,7 @@ namespace Chemistry
             var target = hit.GetComponent<ChemistryObject>();
             if (target)
             {
-                var priorityThisState =
+                /*var priorityThisState =
                     _element.State == State.Electricity && target._element.SubState != State.Electricity ||
                     _element.SubState == State.Electricity && target._element.State != State.Electricity;
                 var priorityTargetState =
@@ -76,8 +78,6 @@ namespace Chemistry
                     _element.SubState != State.Electricity && target._element.State == State.Electricity;
                 //target._element.SubState = State.Undefined;
                 var compareInstanceID = gameObject.GetInstanceID() > target.gameObject.GetInstanceID();
-                
-                Debug.Log($"{name} {priorityThisState} : {priorityTargetState} : {compareInstanceID}");
                 
                 if(compareInstanceID)
                 {
@@ -95,35 +95,26 @@ namespace Chemistry
                     Change(this, target);
                 }
                 
-
                 void Change(ChemistryObject a, ChemistryObject b)
                 {
-                    Debug.Log($"{a.name}は電気。{b.name}変える");
-                    b._element.SubState = State.Electricity;
-                }
+                    Debug.DrawLine(a._transform.position, b._transform.position, Color.yellow, 0, true);
+                    
+                    //Debug.Log($"{a.name}は電気。{b.name}変える");
+                    //b._element.SubState = State.Electricity;
+                }*/
+                target.VerifiedElectricity(this);
             }
-            /*var target = hit.GetComponent<ChemistryObject>();
-            if (target)
+        }
+
+        private void VerifiedElectricity(ChemistryObject co)
+        {
+            var e = co._element;
+            //ステートが電気または認証元が有効かつ、サブステートが電気なら
+            if (e.State == State.Electricity || (e.verifiedElectricity && e.SubState == State.Electricity))
             {
-                
-                var thisElement = Element;
-                Material material = null;
-                try
-                {
-                    material = (Material) this;
-                }
-                catch { }
-                //自分が電気ではないかつ
-                var nonElectricity = thisElement.State != State.Electricity;
-                //materialがnullではないかつ自分が水または属性が鉄または液体（導電）
-                var conductor = material == null || thisElement.State == State.Water || material.substance == Substance.Metal || material.substance == Substance.Liquid;
-                //相手が電気なら
-                var targetIsElectricity = target.Element.State == State.Electricity || target.Element.SubState == State.Electricity;
-                if (nonElectricity && conductor && targetIsElectricity)
-                {
-                    ChangeState(this, State.Electricity);
-                }
-            }*/
+                Debug.Log(co.name + " is verified");
+                verifiedElectricity = true;
+            }
         }
 
         /// <summary>
@@ -530,6 +521,12 @@ namespace Chemistry
             ChangeState(this, _element.State, true);
         }
 
+        private void FixedUpdate()
+        {
+            verifiedElectricity = false;
+            VerifiedElectricity(this);
+        }
+
         private void OnDisable() => Dispose();
         public void Dispose()
         {
@@ -558,16 +555,14 @@ namespace Chemistry
         {
             if (_isParentChemistryObject)
             {
-                GUI.color = Color.black;
                 var style = new GUIStyle {fontSize = 30};
                 var dash = "";
-                if (_element.State == State.Electricity|| _element.SubState == State.Electricity)
+                if (/*_element.State == State.Electricity|| _element.SubState == State.Electricity*/verifiedElectricity)
                 {
-                    GUI.color = Color.yellow;
                     dash = "*";
                 }
-                GUI.Label(new Rect(20, 30 * test, 1000, 100),
-                    $"{dash} {name} : State : {_element.State} SubState : {_element.SubState}", style);
+                //GUI.Label(new Rect(20, 30 * test, 1000, 100), $"{dash} {name} : State : {_element.State} SubState : {_element.SubState}", style);
+                GUI.Label(new Rect(20, 30 * test, 1000, 100), $"{dash} {name} : {verifiedElectricity}", style);
             }
         }
 
