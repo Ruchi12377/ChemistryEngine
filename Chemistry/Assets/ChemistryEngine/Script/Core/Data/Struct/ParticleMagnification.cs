@@ -1,14 +1,15 @@
 ﻿using System;
+using UnityEngine;
 
 namespace Chemistry
 {
     [Serializable]
     public struct ParticleMagnification
     {
-        [NonEditableInPlay] public SizeOffset fire;
-        [NonEditableInPlay] public SizeOffset water;
-        [NonEditableInPlay] public SizeOffset ice;
-        [NonEditableInPlay] public SizeOffset wind;
-        [NonEditableInPlay] public SizeOffset electricity;
+        [NonEditableInPlay, Min(0.01f)] public float fire;
+        [NonEditableInPlay, Min(0.01f)] public float water;
+        [NonEditableInPlay, Min(0.01f)] public float ice;
+        [NonEditableInPlay, Min(0.01f)] public float wind;
+        [NonEditableInPlay, Min(0.01f)] public float electricity;
     }
 }

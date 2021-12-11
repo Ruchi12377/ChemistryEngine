@@ -4,20 +4,17 @@ using System.Collections.Generic;
 using UnityEngine;
 using Random = UnityEngine.Random;
 
-//いろいろな計算を行う
+/*//いろいろな計算を行う
 namespace Chemistry
 {
     [RequireComponent(typeof(Rigidbody))]
     public abstract class ChemistryObject : MonoBehaviour, IDisposable
     {
-        //実体を持つかどうか
-        [SerializeField, NonEditable] private ChemistryObjectType chemistryObjectChemistryObjectType;
         //パーティクルの大きさの差分
         [SerializeField, NonEditableInPlay] private ParticleMagnification particleMagnification;
         [SerializeField]
         private bool verifiedElectricity;
         
-        public int test;
         //キャッシュ用のTransform
         private Transform _transform;
         //現在表示されているパーティクル
@@ -27,12 +24,6 @@ namespace Chemistry
         private static Vector2 _defaultFireLifeTime;
         private bool _isParentChemistryObject;
         private Element _element;
-
-        private ChemistryObjectType ChemistryObjectType
-        {
-            get => chemistryObjectChemistryObjectType;
-            set => chemistryObjectChemistryObjectType = value;
-        }
 
         private void OnEnter(GameObject hit)
         {
@@ -46,7 +37,10 @@ namespace Chemistry
                 {
                     material = (Material) this;
                 }
-                catch { /**/}
+                catch 
+                {
+                    //
+                }
 
                 //自分が電気ではないかつ
                 var nonElectricity = thisElement.State != State.Electricity;
@@ -101,7 +95,7 @@ namespace Chemistry
                     
                     //Debug.Log($"{a.name}は電気。{b.name}変える");
                     //b._element.SubState = State.Electricity;
-                }*/
+                }#1#
                 target.VerifiedElectricity(this);
             }
         }
@@ -116,25 +110,6 @@ namespace Chemistry
                 verifiedElectricity = true;
             }
         }
-
-        /// <summary>
-        /// 炎
-        /// 水
-        /// 氷
-        /// 風
-        /// 電気
-        /// 未定義
-        ///
-        /// Fire
-        /// Water
-        /// Ice
-        /// Wind
-        /// Electricity
-        /// UnInvalidCastExceptionDefined
-        /// </summary>
-        /// <param name="a"></param>
-        /// <param name="b"></param>
-        /// <returns></returns>
         private void ChangeState(ChemistryObject a, ChemistryObject b)
         {
             if (a.GetInstanceID() < b.GetInstanceID())
@@ -151,7 +126,7 @@ namespace Chemistry
                 var bothMaterial = a as Material && b as Material;
                 if (sameState || bothMaterial) return;
             }
-            catch  { /* ignored*/ }
+            catch  { /* ignored#1# }
             
             var em = a.ChemistryObjectType == ChemistryObjectType.Element && b.ChemistryObjectType == ChemistryObjectType.Material;
             var me = a.ChemistryObjectType == ChemistryObjectType.Material && b.ChemistryObjectType == ChemistryObjectType.Element;
@@ -311,7 +286,7 @@ namespace Chemistry
             if(isFirstChange == false && element.SubState != State.Electricity) DestroyParticle(chemistryObject._currentlyParticle);
 
             chemistryObject._currentlyParticle.Clear();
-            var scale = 1f;
+            1
 
             GameObject go = null;
             try
@@ -329,19 +304,19 @@ namespace Chemistry
                 case State.Undefined:
                     break;
                 case State.Fire:
-                    scale = particleMagnification.fire.offset;
+                    scale = particleMagnification.fire;
                     break;
                 case State.Water:
-                    scale = particleMagnification.water.offset;
+                    scale = particleMagnification.water;
                     break;
                 case State.Ice:
-                    scale = particleMagnification.ice.offset;
+                    scale = particleMagnification.ice;
                     break;
                 case State.Wind:
-                    scale = particleMagnification.wind.offset;
+                    scale = particleMagnification.wind;
                     break;
                 case State.Electricity:
-                    scale = particleMagnification.electricity.offset;
+                    scale = particleMagnification.electricity;
                     break;
                 default:
                     throw new ArgumentOutOfRangeException(nameof(state), state, null);
@@ -493,7 +468,6 @@ namespace Chemistry
                 //Element
                 var element = go.AddComponent<Element>();
                 element.State = material.State;
-                element.test = test;
                 material.element = element;
                 //Rigidbody
                 var rb = go.GetComponent<Rigidbody>();
@@ -551,21 +525,6 @@ namespace Chemistry
             OnEnter(hit.gameObject);
         }
 
-        private void OnGUI()
-        {
-            if (_isParentChemistryObject)
-            {
-                var style = new GUIStyle {fontSize = 30};
-                var dash = "";
-                if (/*_element.State == State.Electricity|| _element.SubState == State.Electricity*/verifiedElectricity)
-                {
-                    dash = "*";
-                }
-                //GUI.Label(new Rect(20, 30 * test, 1000, 100), $"{dash} {name} : State : {_element.State} SubState : {_element.SubState}", style);
-                GUI.Label(new Rect(20, 30 * test, 1000, 100), $"{dash} {name} : {verifiedElectricity}", style);
-            }
-        }
-
         [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.BeforeSceneLoad)]
         private static void Init()
         {
@@ -593,4 +552,4 @@ namespace Chemistry
         }
         #endregion
     }
-}
+}*/

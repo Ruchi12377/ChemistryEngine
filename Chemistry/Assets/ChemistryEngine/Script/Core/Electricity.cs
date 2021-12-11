@@ -2,6 +2,8 @@
 using UnityEngine;
 using Random = UnityEngine.Random;
 using Object = UnityEngine.Object;
+using Mat = UnityEngine.Material;
+
 
 [ExecuteAlways]
 public class Electricity : MeshParticle
@@ -10,9 +12,9 @@ public class Electricity : MeshParticle
     private Transform _flash1;
     private Transform _flash2;
     private Transform _noise;
-    private Material _flash1Mat;
-    private Material _flash2Mat;
-    private Material _noiseMat;
+    private Mat _flash1Mat;
+    private Mat _flash2Mat;
+    private Mat _noiseMat;
 
     private void OnEnable()
     {
