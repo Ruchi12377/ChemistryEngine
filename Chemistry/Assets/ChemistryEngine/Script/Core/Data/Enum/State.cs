@@ -6,7 +6,6 @@
         Fire,
         Water,
         Ice,
-        Wind,
-        Electricity
+        Wind
     }
 }

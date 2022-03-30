@@ -9,8 +9,7 @@ using Random = UnityEngine.Random;
     Fire,
     Water,
     Ice,
-    Wind,
-    Electricity
+    Wind
  */
 
 /// <summary>
@@ -25,72 +24,56 @@ using Random = UnityEngine.Random;
 public abstract class ChemistryObject : MonoBehaviour
 {
     //横、縦の順番
-    private readonly (State, State)[,] _table = {
+    private readonly (State, State)[,] _table =
+    {
         {
-            (State.Undefined, State.Undefined),
+            (State.Undefined, State.Undefined), 
             (State.Fire, State.Fire),
-            (State.Water, State.Water),
+            (State.Undefined, State.Water),
             (State.Ice, State.Ice),
-            (State.Wind, State.Wind),
-            (State.Electricity, State.Electricity)
+            (State.Undefined, State.Wind),
         },
         {
-            (State.Fire, State.Fire),
-            (State.Fire, State.Fire),
+            (State.Fire, State.Fire), 
+            (State.Fire, State.Fire), 
             (State.Undefined, State.Water),
             (State.Fire, State.Undefined),
             (State.Undefined, State.Wind),
-            (State.Fire, State.Electricity)
         },
         {
             (State.Water, State.Undefined),
-            (State.Undefined, State.Water),
+            (State.Water, State.Undefined), 
             (State.Water, State.Water),
-            (State.Ice, State.Ice),
+            (State.Ice, State.Ice), 
             (State.Water, State.Wind),
-            (State.Electricity, State.Electricity)
         },
         {
-            (State.Ice, State.Ice),
+            (State.Ice, State.Ice), 
             (State.Undefined, State.Fire),
-            (State.Ice, State.Ice),
+            (State.Ice, State.Ice), 
             (State.Ice, State.Ice),
             (State.Ice, State.Wind),
-            (State.Ice, State.Electricity)
         },
         {
             (State.Wind, State.Undefined),
-            (State.Undefined, State.Wind),
+            (State.Wind, State.Undefined), 
             (State.Wind, State.Water),
             (State.Wind, State.Ice),
             (State.Wind, State.Wind),
-            (State.Wind, State.Electricity)
         },
-        {
-            (State.Electricity, State.Electricity),
-            (State.Electricity, State.Fire),
-            (State.Electricity, State.Electricity),
-            (State.Electricity, State.Ice),
-            (State.Electricity, State.Wind),
-            (State.Electricity, State.Electricity)
-        }
     };
+
     //自分自身からは変更できないが、継承してるクラスからは変更できる
-    protected bool IsMaterial { private get; set; }
-    public bool HasElectricity;
+    private bool IsMaterial => this is Material;
 
     //燃えるか
-    [SerializeField] protected bool combustible;
-
-    //電気を通すか
-    [SerializeField] protected bool conductor;
+    [SerializeField, Header("燃えるか")] protected bool combustible;
 
     //液体か
-    [SerializeField] protected bool liquid;
-    
+    [SerializeField, Header("液体か")] protected bool liquid;
+
     [SerializeField] private State defaultState;
     [SerializeField, NonEditable] private State currentState;
-    [SerializeField, NonEditable] private State currentSubState;
     [SerializeField, NonEditableInPlay] private ParticleMagnification particleMagnification;
 
     private GameObject _currentParticle;
@@ -99,7 +82,6 @@ public abstract class ChemistryObject : MonoBehaviour
     private static Vector2 _defaultFireLifeTime;
 
     public State State { get; private set; } = State.Undefined;
-    public State SubState { get; private set; } = State.Undefined;
 
     //キャッシュ用のTransform
     private Transform _transform;
@@ -116,7 +98,6 @@ public abstract class ChemistryObject : MonoBehaviour
             _chemistryParticle.water = Load("Water");
             _chemistryParticle.ice = Load("Ice");
             _chemistryParticle.wind = Load("Wind");
-            _chemistryParticle.electricity = Load("Electricity");
 
             GameObject Load(string path)
             {
@@ -133,8 +114,6 @@ public abstract class ChemistryObject : MonoBehaviour
 
     private void Start()
     {
-        //こいつを呼び出すことで、MaterialかElementかどうかを判断してくれる
-        Init();
         _transform = transform;
         if (defaultState != State.Undefined)
         {
@@ -144,44 +123,26 @@ public abstract class ChemistryObject : MonoBehaviour
 
     private void Update()
     {
-        if (HasElectricity)
-        {
-            Debug.Log($"{gameObject.name}は電気を帯びている{SubState}");
-        }
-        HasElectricity = false;
-        SubState = State.Undefined;
-        currentSubState = SubState;
+        currentState = State;
     }
 
-    #region 当たり判定関係
+    #region 当たり判定
 
-    #region Enter
-
-    private void OnCollisionEnter(Collision other)
+    private void OnCollisionStay(Collision other)
     {
-        Enter(other.gameObject);
+        Stay(other.gameObject);
     }
 
-    private void OnTriggerEnter(Collider other)
+    private void OnTriggerStay(Collider other)
     {
-        Enter(other.gameObject);
+        Stay(other.gameObject);
     }
 
-    private void Enter(GameObject obj)
+    private void Stay(GameObject obj)
     {
         var chemistryObject = obj.GetComponent<ChemistryObject>();
         if (chemistryObject == false)
         {
-            return;
-        }
-
-        var s1 = State;
-        var s2 = chemistryObject.State;
-        //どっちかのオブジェクトが電気なら
-        if (s1 == State.Electricity || s2 == State.Electricity)
-        {
-            //電気はEnterで処理するのは適切ではないので
-            //処理しない
             return;
         }
 
@@ -191,56 +152,6 @@ public abstract class ChemistryObject : MonoBehaviour
             Action(this, chemistryObject);
         }
     }
-
-    #endregion
-
-    #region Stay
-
-    private void OnTriggerStay(Collider other)
-    {
-        Stay(other.gameObject);
-    }
-    
-    private void OnCollisionStay(Collision other)
-    {
-        Stay(other.gameObject);
-    }
-    
-    private void Stay(GameObject obj)
-    {
-        var chemistryObject = obj.GetComponent<ChemistryObject>();
-        if (chemistryObject == false)
-        {
-            return;
-        }
-
-        var s1 = State;
-        var s2 = chemistryObject.State;
-        //どっちかが電気ではないとだめ
-        if (s1 != State.Electricity && s2 != State.Electricity) return;
-        
-        //自分の方がInstanceIDが大きいなら
-        if (gameObject.GetInstanceID() > chemistryObject.gameObject.GetInstanceID())
-        {
-            if (s1 == State.Electricity && s2 != State.Electricity)
-            {
-                chemistryObject.HasElectricity = true;
-                chemistryObject.SubState = State.Electricity;
-                chemistryObject.currentSubState = SubState;
-            }
-            
-            if (s1 != State.Electricity && s2 == State.Electricity)
-            {
-                HasElectricity = true;
-                SubState = State.Electricity;
-                currentSubState = SubState;
-            }
-            //Action(this, chemistryObject);
-        }
-    }
-
-
-    #endregion
 
     #endregion
 
@@ -295,13 +206,16 @@ public abstract class ChemistryObject : MonoBehaviour
             //index
             var i1 = (int)s1;
             var i2 = (int)s2;
-            
+
             //result
             var (r1, r2) = _table[i1, i2];
             
+            Debug.Log($"{i1} {i2}");
+            Debug.Log($"{r1} {r2}");
+
             //適応
-            Debug.Log($"{element1.gameObject.name} {r1}");
-            Debug.Log($"{element2.gameObject.name} {r2}");
+            Debug.Log($"{element1.gameObject.name} {s1}→{r1}");
+            Debug.Log($"{element2.gameObject.name} {s2}→{r2}");
             element1.SetState(r1);
             element2.SetState(r2);
         }
@@ -319,10 +233,10 @@ public abstract class ChemistryObject : MonoBehaviour
             //index
             var i1 = (int)s1;
             var i2 = (int)s2;
-            
+
             //result
             var (_, r2) = _table[i1, i2];
-            
+
             //適応
             material.SetState(r2);
         }
@@ -330,19 +244,17 @@ public abstract class ChemistryObject : MonoBehaviour
 
     #region ステート関連
 
-    protected abstract void Init();
-
     private void SetState(State target)
     {
         if (State == target)
         {
             return;
         }
+
         var state = CheckStateFromAttribute(target);
         if (state)
         {
             State = target;
-            currentState = State;
             Debug.Log($"{gameObject.name} {State}");
             CreateParticle();
         }
@@ -353,13 +265,11 @@ public abstract class ChemistryObject : MonoBehaviour
     {
         //燃えないのに燃やそうとしてる
         var a = combustible == false && target == State.Fire;
-        //電気を通さないのに電気を通そうとしてる
-        var b = conductor == false && target == State.Electricity;
         //流体なのに燃やそうとしている
-        var c = liquid && target == State.Fire;
+        var b = liquid && target == State.Fire;
 
         //特定の、ありえない条件に当てはまるかどうか
-        return (a || b || c) == false;
+        return (a || b) == false;
     }
 
     #endregion
@@ -385,9 +295,6 @@ public abstract class ChemistryObject : MonoBehaviour
             case State.Wind:
                 scale = particleMagnification.wind;
                 break;
-            case State.Electricity:
-                scale = particleMagnification.electricity;
-                break;
             default:
                 throw new ArgumentOutOfRangeException(nameof(State), State, null);
         }
@@ -402,41 +309,44 @@ public abstract class ChemistryObject : MonoBehaviour
         if (State != State.Undefined)
         {
             var prefab = GetParticle(State);
-            //パーティクルを生成して、自分自身を親として設定する
-            _currentParticle = Instantiate(prefab, _transform);
-            var particle = _currentParticle.GetComponent<ParticleSystem>();
-            if (particle != null)
+            if (prefab != null)
             {
-                //lifetimeをscale似合わせる
-                var lifeTime = _defaultFireLifeTime * scale;
-                ParticleSystem.MainModule main;
-                main = particle.main;
-                var curve = main.startLifetime;
-                switch (curve.mode)
+                //パーティクルを生成して、自分自身を親として設定する
+                _currentParticle = Instantiate(prefab, _transform);
+                var particle = _currentParticle.GetComponent<ParticleSystem>();
+                if (particle != null)
                 {
-                    case ParticleSystemCurveMode.Constant:
-                        curve = curve.constant;
-                        break;
-                    case ParticleSystemCurveMode.TwoConstants:
-                        curve.constantMin = Mathf.Clamp(lifeTime.x, 0.1f, 5);
-                        curve.constantMax = Mathf.Clamp(lifeTime.y, 0.1f, 5);
-                        break;
-                    case ParticleSystemCurveMode.Curve:
-                        curve = curve.Evaluate(Random.value);
-                        break;
-                    case ParticleSystemCurveMode.TwoCurves:
-                        var t = Random.value;
-                        curve = Random.Range(curve.curveMin.Evaluate(t),
-                            curve.curveMax.Evaluate(t) * curve.curveMultiplier);
-                        break;
-                    default:
-                        return;
-                }
+                    //lifetimeをscale似合わせる
+                    var lifeTime = _defaultFireLifeTime * scale;
+                    ParticleSystem.MainModule main;
+                    main = particle.main;
+                    var curve = main.startLifetime;
+                    switch (curve.mode)
+                    {
+                        case ParticleSystemCurveMode.Constant:
+                            curve = curve.constant;
+                            break;
+                        case ParticleSystemCurveMode.TwoConstants:
+                            curve.constantMin = Mathf.Clamp(lifeTime.x, 0.1f, 5);
+                            curve.constantMax = Mathf.Clamp(lifeTime.y, 0.1f, 5);
+                            break;
+                        case ParticleSystemCurveMode.Curve:
+                            curve = curve.Evaluate(Random.value);
+                            break;
+                        case ParticleSystemCurveMode.TwoCurves:
+                            var t = Random.value;
+                            curve = Random.Range(curve.curveMin.Evaluate(t),
+                                curve.curveMax.Evaluate(t) * curve.curveMultiplier);
+                            break;
+                        default:
+                            return;
+                    }
 
-                main.startLifetime = curve;
+                    main.startLifetime = curve;
+                }
+                
+                _currentParticle.transform.localScale = Vector3.one * scale;
             }
-            
-            _currentParticle.transform.localScale = Vector3.one * scale;
         }
 
         void DestroyParticle(GameObject particles)
@@ -483,8 +393,6 @@ public abstract class ChemistryObject : MonoBehaviour
                 return _chemistryParticle.ice;
             case State.Wind:
                 return _chemistryParticle.wind;
-            case State.Electricity:
-                return _chemistryParticle.electricity;
             default:
                 return null;
         }

@@ -10,6 +10,5 @@ namespace Chemistry
         [NonEditableInPlay, Min(0.01f)] public float water;
         [NonEditableInPlay, Min(0.01f)] public float ice;
         [NonEditableInPlay, Min(0.01f)] public float wind;
-        [NonEditableInPlay, Min(0.01f)] public float electricity;
     }
 }

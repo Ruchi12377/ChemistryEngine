@@ -8,6 +8,5 @@ namespace Chemistry
         public GameObject water;
         public GameObject ice;
         public GameObject wind;
-        public GameObject electricity;
     }
 }

@@ -23,30 +23,14 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="fba4798f-c9d1-485b-b4ee-5439459e4f50" name="Default Changelist" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Chemistry/.idea/contentModel.xml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Chemistry/.idea/indexLayout.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Chemistry/.idea/indexLayout.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Chemistry/.idea/modules.xml" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/.idea.Chemistry/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Chemistry/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.idea.Chemistry/riderModule.iml" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Example/Materials/Ground.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Example/Materials/Ground.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Example/Materials/Metal.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Example/Materials/Metal.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Example/Materials/WoodBox.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Example/Materials/WoodBox.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Example/Settings/ForwardRenderer.asset" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Example/Settings/ForwardRenderer.asset" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Material/Electron.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Material/Electron.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Material/Fire.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Material/Fire.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Material/Noise.mat" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Material/Noise.mat" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/ChemistryObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/ChemistryObject.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Data/Class.meta" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Data/Class/SizeOffset.cs" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Data/Class/SizeOffset.cs.meta" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Example/Scenes/New Scene.unity" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Example/Scenes/New Scene.unity" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Data/Enum/State.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Data/Enum/State.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Data/Struct/ChemistryParticlePrefabs.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Data/Struct/ChemistryParticlePrefabs.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Data/Struct/ParticleMagnification.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Data/Struct/ParticleMagnification.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Electricity.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Electricity.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Element.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Element.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Material.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/Material.cs" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/manifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/manifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/Packages/packages-lock.json" beforeDir="false" afterPath="$PROJECT_DIR$/Packages/packages-lock.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/ProjectVersion.txt" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/ProjectSettings/URPProjectSettings.asset" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/NewCore/ChemistryObject.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/NewCore/ChemistryObject.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/NewCore/Element.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/NewCore/Element.cs" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/NewCore/Material.cs" beforeDir="false" afterPath="$PROJECT_DIR$/Assets/ChemistryEngine/Script/NewCore/Material.cs" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" beforeDir="false" afterPath="$PROJECT_DIR$/UserSettings/EditorUserSettings.asset" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -69,6 +53,8 @@
     <setting file="file:///Applications/Unity/Hub/Editor/2020.2.7f1/Unity.app/Contents/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Tests/Runtime/Canvas/CheckMeshColorsAndColors32Match.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file:///Applications/Unity/Hub/Editor/2020.2.7f1/Unity.app/Contents/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Tests/Editor/InputField/ContentValidation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ChemistryEngine/Script/NewCore/Element.cs" root0="FORCE_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.shadergraph@10.3.2/Editor/Drawing/Controls/DielectricSpecularControl.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ChemistryEngine/Script/Core/IStatus.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ChemistryEngine/Script/NewCore/ChemistryObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file:///Applications/Unity/Hub/Editor/2020.2.7f1/Unity.app/Contents/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Tests/Editor/CanvasRenderer/ChangingHierarchyOfCanvasRenderer.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
@@ -193,6 +179,7 @@
       <workItem from="1607874427229" duration="11959000" />
       <workItem from="1607930198249" duration="4186000" />
       <workItem from="1636814790182" duration="14993000" />
+      <workItem from="1648648882967" duration="6401000" />
     </task>
     <servers />
   </component>
