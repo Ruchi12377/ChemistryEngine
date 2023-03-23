@@ -1,4 +1,8 @@
 //実態を持たないもの
-public class Element : ChemistryObject
+
+namespace ChemistryEngine.Script.NewCore
 {
+	public class Element : ChemistryObject
+	{
+	}
 }

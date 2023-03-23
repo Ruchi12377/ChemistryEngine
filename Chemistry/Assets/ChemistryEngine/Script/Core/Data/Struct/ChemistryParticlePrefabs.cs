@@ -1,12 +1,12 @@
 ﻿using UnityEngine;
 
-namespace Chemistry
+namespace ChemistryEngine.Script.Core.Data.Struct
 {
     public struct ChemistryParticlePrefabs
     {
-        public GameObject fire;
-        public GameObject water;
-        public GameObject ice;
-        public GameObject wind;
+        public GameObject Fire;
+        public GameObject Water;
+        public GameObject Ice;
+        public GameObject Wind;
     }
 }
