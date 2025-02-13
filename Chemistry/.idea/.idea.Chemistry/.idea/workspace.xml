@@ -22,7 +22,9 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="fba4798f-c9d1-485b-b4ee-5439459e4f50" name="Default Changelist" comment="" />
+    <list default="true" id="fba4798f-c9d1-485b-b4ee-5439459e4f50" name="Default Changelist" comment="">
+      <change beforePath="$PROJECT_DIR$/.idea/.idea.Chemistry/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/.idea.Chemistry/.idea/workspace.xml" afterDir="false" />
+    </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
@@ -40,16 +42,16 @@
     </file-type-list>
   </component>
   <component name="HighlightingSettingsPerFile">
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@12.1.9/Runtime/2D/Passes/Utility/RendererLighting.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Assets/ChemistryEngine/Script/NewCore/Element.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@12.1.9/Shaders/SimpleLitForwardPass.hlsl" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@12.1.9/Shaders/UnlitInput.hlsl" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file:///Applications/Unity/Hub/Editor/2020.2.7f1/Unity.app/Contents/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Tests/Runtime/Canvas/CheckMeshColorsAndColors32Match.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Assets/ChemistryEngine/Script/NewCore/ChemistryObject.cs" root0="FORCE_HIGHLIGHTING" />
-    <setting file="file:///Applications/Unity/Hub/Editor/2020.2.7f1/Unity.app/Contents/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Tests/Editor/InputField/ContentValidation.cs" root0="SKIP_HIGHLIGHTING" />
     <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@12.1.9/Runtime/External/LibTessDotNet/Tess.cs" root0="SKIP_HIGHLIGHTING" />
-    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@12.1.9/Runtime/Debug/DebugDisplaySettingsRendering.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file:///Applications/Unity/Hub/Editor/2020.2.7f1/Unity.app/Contents/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Tests/Runtime/Canvas/CheckMeshColorsAndColors32Match.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@12.1.9/Shaders/UnlitInput.hlsl" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file:///Applications/Unity/Hub/Editor/2020.2.7f1/Unity.app/Contents/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Tests/Editor/InputField/ContentValidation.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Assets/ChemistryEngine/Script/NewCore/ChemistryObject.cs" root0="FORCE_HIGHLIGHTING" />
     <setting file="file://$APPLICATION_CONFIG_DIR$/resharper-host/DecompilerCache/decompiler/50ae09dd6d434c2aae75bb285b28d552751200/2e/b0029f19/CustomEditor.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@12.1.9/Runtime/2D/Passes/Utility/RendererLighting.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@12.1.9/Runtime/Debug/DebugDisplaySettingsRendering.cs" root0="SKIP_HIGHLIGHTING" />
+    <setting file="file://$PROJECT_DIR$/Library/PackageCache/com.unity.render-pipelines.universal@12.1.9/Shaders/SimpleLitForwardPass.hlsl" root0="SKIP_HIGHLIGHTING" />
     <setting file="file:///Applications/Unity/Hub/Editor/2020.2.7f1/Unity.app/Contents/Resources/PackageManager/BuiltInPackages/com.unity.ugui/Tests/Editor/CanvasRenderer/ChangingHierarchyOfCanvasRenderer.cs" root0="SKIP_HIGHLIGHTING" />
   </component>
   <component name="IdeDocumentHistory">
